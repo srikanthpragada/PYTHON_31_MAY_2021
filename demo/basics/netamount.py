@@ -3,7 +3,12 @@
 price = int(input("Enter price :"))
 qty = int(input("Enter qty :"))
 amount = price * qty
-discount = amount * 0.10
+
+if qty >= 3:
+    discount = amount * 0.20
+else:
+    discount = amount * 0.10
+
 gross_amount = amount - discount
 tax = gross_amount * 0.05
 net_amount = gross_amount + tax
