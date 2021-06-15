@@ -5,4 +5,4 @@ def wish(msg, name="Guest", /):
 
 wish("Good Morning")
 wish("Hi", "Mark")
-wish(msg="Hello")
+# wish(msg="Hello")
