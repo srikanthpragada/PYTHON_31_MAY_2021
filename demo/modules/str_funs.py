@@ -9,6 +9,11 @@ def has_upper(st):
 
 
 def count_upper(st):
+    """
+    Returns number of uppercase letters in the given string.
+    :param st: String in which we count uppercase letters
+    :return: Count of uppercase letters
+    """
     count = 0
     for c in st:
         if c.isupper():
