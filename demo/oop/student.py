@@ -21,15 +21,17 @@ class Student:
 
     def payment(self, amount):
         self.feepaid += amount
-
+    
+    @property
     def totalfee(self):
         return Student.course_fees[self.course]
 
     def getdue(self):
-        return self.totalfee() - self.feepaid
+        return self.totalfee - self.feepaid
 
 
 Student.change_fee('javaee', 6000)
 s = Student("Scott", "javaee")
 s.payment(3000)
 print(s.getdue())  # 2000
+print(s.totalfee)
