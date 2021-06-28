@@ -1,4 +1,8 @@
-class Player:
+from abc import ABC, abstractmethod
+
+
+# Abstract class
+class Player(ABC):
     def __init__(self, name, country):
         self.name = name
         self.country = country
@@ -6,6 +10,10 @@ class Player:
     def show(self):
         print('Name    : ', self.name)
         print('Country : ', self.country)
+
+    @abstractmethod
+    def getpoints(self):
+        pass
 
 
 class Cricketer(Player):
@@ -19,6 +27,9 @@ class Cricketer(Player):
         print("Runs    : ", self.runs)
         print("Wickets : ", self.wickets)
 
+    def getpoints(self):
+        return (self.runs // 200) + (self.wickets // 10)
+
 
 class Footballer(Player):
     def __init__(self, name, country, goals):
@@ -28,6 +39,9 @@ class Footballer(Player):
     def show(self):
         super().show()
         print("Goals   : ", self.goals)
+
+    def getpoints(self):
+        return self.goals
 
 
 c = Cricketer("Dhoni", "India", "4939", 0)
