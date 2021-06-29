@@ -26,7 +26,7 @@ class SavingsAccount:
         if self.balance - SavingsAccount.minbal >= amount:
             self.balance -= amount
         else:
-            print("Sorry! Insufficient Balance!")
+            raise ValueError("Sorry! Insufficient Balance!")
 
     def getbalance(self):
         return self.balance
@@ -37,7 +37,7 @@ print(SavingsAccount.getminbal())  # Call static method
 a1 = SavingsAccount(1, "Andy")  # Create object
 a1.deposit(10000)
 a1.deposit(30000)
-a1.withdraw(20000)
+a1.withdraw(200000)
 
 # a1.balance = 10000000
 print(a1.getbalance())
