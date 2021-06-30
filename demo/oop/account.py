@@ -1,3 +1,20 @@
+class InvalidAmountError(Exception):
+    def __init__(self, amount):
+        self.amount = amount
+
+    def __str__(self):
+        return f"Invalid amount {self.amount} for transaction!"
+
+
+class InsufficientFundsError(Exception):
+    def __init__(self, balance, amount):
+        self.amount = amount
+        self.balance = balance
+
+    def __str__(self):
+        return f"Insufficient balance {self.balance} for withdraw of {self.amount}"
+
+
 class SavingsAccount:
     # Class attribute or Static attribute
     minbal = 5000
@@ -20,13 +37,16 @@ class SavingsAccount:
         print("Account Balance     : ", self.balance)
 
     def deposit(self, amount):
+        if amount <= 0:
+            raise InvalidAmountError(amount)
+
         self.balance += amount
 
     def withdraw(self, amount):
         if self.balance - SavingsAccount.minbal >= amount:
             self.balance -= amount
         else:
-            raise ValueError("Sorry! Insufficient Balance!")
+            raise InsufficientFundsError(self.balance, amount)
 
     def getbalance(self):
         return self.balance
@@ -44,5 +64,3 @@ print(a1.getbalance())
 
 a2 = SavingsAccount(2, "Joe", 20000)
 a2.info()
-
-
